@@ -6,7 +6,7 @@ export class Counter extends Component {
     return (
       <div className="Counter">
         <h1>{this.props.count}</h1>
-        <Controllers />
+        <Controllers handleMinusBtnClick={this.props.handleMinusBtnClick} handlePlusBtnClick={this.props.handlePlusBtnClick} />
       </div>
     )
   }

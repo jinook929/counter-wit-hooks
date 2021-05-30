@@ -11,12 +11,24 @@ export class App extends Component {
        count: 0
     }
   }
+
+  handleMinusBtnClick = () => {
+    this.setState({count: this.state.count - 1})
+  }
+
+  handlePlusBtnClick = () => {
+    this.setState({count: this.state.count + 1})
+  }
+
+  handleResteBtnClick = () => {
+    this.setState({count: 0})
+  }
   
   render() {
     return (
       <div>
-        <Counter count={this.state.count} />
-        <Reset />
+        <Counter count={this.state.count} handleMinusBtnClick={this.handleMinusBtnClick} handlePlusBtnClick={this.handlePlusBtnClick} />
+        <Reset handleResteBtnClick={this.handleResteBtnClick} />
       </div>
     )
   }
