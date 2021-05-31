@@ -1,15 +1,16 @@
 import React from 'react'
 import '../App.css'
 
-import {connect} from 'react-redux'
 import {resetCount} from '../actions'
+import {useDispatch} from 'react-redux'
 
-const Reset = (props) => {
+const Reset = () => {
+  const dispatch = useDispatch()
   return (
     <div className="Reset">
-      <button id="resetBtn" onClick={props.resetCount}>Reset</button>
+      <button id="resetBtn" onClick={() => dispatch(resetCount())}>Reset</button>
     </div>
   )
 }
 
-export default connect(null, {resetCount})(Reset)
+export default Reset

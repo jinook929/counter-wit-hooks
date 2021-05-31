@@ -1,21 +1,16 @@
 import React from 'react'
 import Controllers from "./Controllers"
 
-import {connect} from 'react-redux'
+import {useSelector} from 'react-redux'
 
-const Counter = (props) => {
+const Counter = () => {
+  const count = useSelector(state => state.count)
   return (
     <div className="Counter">
-      <h1>{props.count}</h1>
+      <h1>{count}</h1>
       <Controllers />
     </div>
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    count: state.count
-  }
-}
-
-export default connect(mapStateToProps)(Counter)
+export default Counter

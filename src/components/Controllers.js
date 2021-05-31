@@ -1,32 +1,18 @@
 import React from 'react'
 import '../App.css'
 
-import {connect} from 'react-redux'
 import {increaseCount, decreaseCount} from '../actions'
+import {useSelector, useDispatch} from 'react-redux'
 
-const Controllers = (props) => {
-  const handleBtnClick = (e) => {
-    props[e.target.name](props.count)
-  }
+const Controllers = () => {
+  const count = useSelector(state => state.count)
+  const dispatch = useDispatch()
   return (
     <div className="Controllers">
-      <button id="minusBtn" onClick={handleBtnClick} name="decreaseCount">-</button>
-      <button id="plusBtn" onClick={handleBtnClick} name="increaseCount">+</button>
+      <button id="minusBtn" onClick={() => dispatch(decreaseCount(count))}>-</button>
+      <button id="plusBtn" onClick={() => dispatch(increaseCount(count))}>+</button>
     </div>
   )
 }
 
-const mapStateToProps = state => {
-  return {
-    count: state.count
-  }
-}
-
-const mapDispatchToProps = dispatch => {
-  return {
-    decreaseCount: count => dispatch(decreaseCount(count)),
-    increaseCount: count => dispatch(increaseCount(count)) 
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Controllers)
+export default Controllers
