@@ -1,15 +1,21 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Controllers from "./Controllers"
 
-export class Counter extends Component {
-  render() {
-    return (
-      <div className="Counter">
-        <h1>{this.props.count}</h1>
-        <Controllers handleMinusBtnClick={this.props.handleMinusBtnClick} handlePlusBtnClick={this.props.handlePlusBtnClick} />
-      </div>
-    )
+import {connect} from 'react-redux'
+
+const Counter = (props) => {
+  return (
+    <div className="Counter">
+      <h1>{props.count}</h1>
+      <Controllers />
+    </div>
+  )
+}
+
+const mapStateToProps = state => {
+  return {
+    count: state.count
   }
 }
 
-export default Counter
+export default connect(mapStateToProps)(Counter)

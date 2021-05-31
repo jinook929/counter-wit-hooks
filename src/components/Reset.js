@@ -1,14 +1,15 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../App.css'
 
-export class Reset extends Component {
-  render() {
-    return (
-      <div className="Reset">
-        <button id="resetBtn" onClick={() => this.props.handleResteBtnClick()} >Reset</button>
-      </div>
-    )
-  }
+import {connect} from 'react-redux'
+import {resetCount} from '../actions'
+
+const Reset = (props) => {
+  return (
+    <div className="Reset">
+      <button id="resetBtn" onClick={props.resetCount}>Reset</button>
+    </div>
+  )
 }
 
-export default Reset
+export default connect(null, {resetCount})(Reset)
